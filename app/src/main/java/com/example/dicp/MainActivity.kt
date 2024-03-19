@@ -30,11 +30,6 @@ class MainActivity : AppCompatActivity() {
     private var ourRequestCode: Int = 123
     private var galleryRequestCode: Int = 456
     private lateinit var imageView1: ImageView
-//    private lateinit var galleryButton: Button
-//    private lateinit var cameraButton: Button
-    private lateinit var checkButton: Button
-    private lateinit var textView: TextView
-//
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,10 +115,10 @@ class MainActivity : AppCompatActivity() {
     private fun fetchAndDisplayMessage(image: Bitmap?) {
         val base64Image = encodeImageToBase64(image)
         if (base64Image != null) {
-//            Toast.makeText(applicationContext, base64Image, Toast.LENGTH_LONG).show()
+           Toast.makeText(applicationContext, "Image encoded successfully!", Toast.LENGTH_LONG).show()
 //            textView.text = base64Image
             val requestBody = JSONObject()
-            requestBody.put("image", base64Image)
+            requestBody.put("img_base64", base64Image)
             val request = Request.Builder()
                 .url("https://seg-api-tens-pktsznq7fq-em.a.run.app/segment")
                 .post(requestBody.toString().toRequestBody("application/json".toMediaTypeOrNull()))
@@ -139,22 +134,23 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onResponse(call: Call, response: Response) {
                     val responseBody = response.body?.string()
-                    if (response.isSuccessful) {
-                        runOnUiThread {
-                            if (responseBody != null) {
-                                Toast.makeText(this@MainActivity, responseBody, Toast.LENGTH_LONG).show()
-                            } else {
-                                // Handle the case when response body is null
-                                Toast.makeText(this@MainActivity, "Response body is null", Toast.LENGTH_LONG).show()
-                            }
-                        }
-                    } else {
-                        // Handle unsuccessful response (e.g., show error message)
-                        Toast.makeText(this@MainActivity, "Unsuccessful response", Toast.LENGTH_LONG).show()
-                    }
+//                    if (response.isSuccessful) {
+//                        runOnUiThread {
+//                            if (responseBody != null) {
+//                                Toast.makeText(this@MainActivity, responseBody, Toast.LENGTH_LONG).show()
+//                            } else {
+//                                // Handle the case when response body is null
+//                                Toast.makeText(this@MainActivity, "Response body is null", Toast.LENGTH_LONG).show()
+//                            }
+//                        }
+//                    } else {
+//                        // Handle unsuccessful response (e.g., show error message)
+//                        runOnUiThread{
+//                            Toast.makeText(this@MainActivity, "Unsuccessful response", Toast.LENGTH_LONG).show()
+//                        }
+//                    }
                     val jsonResponse = JSONObject(responseBody)
                     val mask = jsonResponse.optString("mask")
-//                    yaha
 
                     if (mask.isNotEmpty()) {
                         val decodedMask = decodeBase64ToBitmap(mask)
@@ -163,7 +159,6 @@ class MainActivity : AppCompatActivity() {
                         }
                     } else {
                         runOnUiThread {
-//                            Toast.makeText(applicationContext, mask.toString(), Toast.LENGTH_SHORT).show()
                           Toast.makeText(this@MainActivity, "Failed to decode the mask", Toast.LENGTH_SHORT).show()
                         }
                     }
@@ -189,19 +184,4 @@ class MainActivity : AppCompatActivity() {
         return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
     }
 
-//    private fun decodeBase64ToBitmap(base64: String): Bitmap? {
-//        // Remove data URI scheme if exists
-//        val base64Image = if (base64.startsWith("data:image/png;base64,")) {
-//            base64.substring("data:image/png;base64,".length)
-//        } else {
-//            base64
-//        }
-//
-//        val decodedBytes = Base64.decode(base64Image, Base64.DEFAULT)
-//        var type = decodedBytes.toString()
-//        runOnUiThread {
-//            Toast.makeText(applicationContext, type, Toast.LENGTH_SHORT).show()
-//        }
-//        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
-//    }
 }

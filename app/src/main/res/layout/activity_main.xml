@@ -47,9 +47,10 @@
         app:cardCornerRadius="16dp"
         app:cardElevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25"
-        tools:layout_editor_absoluteX="-14dp" >
+        app:layout_constraintVertical_bias="0.264">
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -198,38 +199,17 @@
         android:text="Tap to select from gallery"
         />
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:id="@+id/checkbutton"
-        app:layout_constraintTop_toBottomOf="@id/cameraButton"
-        app:layout_constraintLeft_toRightOf="@id/cameraButton"
-        app:layout_constraintRight_toLeftOf="@id/galleryButton"
-        android:elevation="16dp"
-        android:background="@drawable/rounded_button_background"
-        android:layout_marginTop="16dp"
-        android:text="Check API"/>
-
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:id="@+id/imageView1"
-        app:layout_constraintTop_toBottomOf="@id/checkbutton"
+        app:layout_constraintTop_toBottomOf="@id/cameraButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_margin="16dp"
         android:elevation="16dp"/>
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="200dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/imageView1"
-        app:layout_constraintTop_toBottomOf="@id/cameraButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/textView1"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
