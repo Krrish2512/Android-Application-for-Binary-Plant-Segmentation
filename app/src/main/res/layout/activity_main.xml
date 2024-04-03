@@ -172,12 +172,12 @@
     <Button
         android:id="@+id/cameraButton"
         android:layout_width="150dp"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/rounded_button_background"
         android:elevation="16dp"
         android:onClick="takePhoto"
-        android:text="Tap to click a picture"
+        android:text="Open camera to click a picture"
         android:textStyle="bold"
         app:layout_constraintHorizontal_bias="0.194"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -187,7 +187,7 @@
 
     <Button
         android:layout_width="150dp"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:id="@+id/galleryButton"
         app:layout_constraintLeft_toRightOf="@id/cameraButton"
         app:layout_constraintRight_toRightOf="parent"
@@ -196,20 +196,20 @@
         android:textStyle="bold"
         android:elevation="16dp"
         android:background="@drawable/rounded_button_background"
-        android:text="Tap to select from gallery"
+        android:text="Select a picture from gallery"
         />
 
 
     <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:id="@+id/imageView1"
-        app:layout_constraintTop_toBottomOf="@id/cameraButton"
+        android:layout_margin="16dp"
+        android:elevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_margin="16dp"
-        android:elevation="16dp"/>
+        app:layout_constraintTop_toBottomOf="@id/cameraButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

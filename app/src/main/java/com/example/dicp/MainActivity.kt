@@ -129,6 +129,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onFailure(call: Call, e: IOException) {
                     runOnUiThread {
                         Toast.makeText(applicationContext, "Failed to connect to the server", Toast.LENGTH_SHORT).show()
+                        imageView1.setImageDrawable(null)
                     }
                 }
 
